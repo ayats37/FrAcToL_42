@@ -6,7 +6,7 @@
 /*   By: taya <taya@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 11:58:17 by taya              #+#    #+#             */
-/*   Updated: 2025/02/19 18:19:52 by taya             ###   ########.fr       */
+/*   Updated: 2025/02/19 18:53:30 by taya             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void   put_pixel_to_image(t_data *data, int x, int y, int color);
 int    create_window_img(t_data *data);
 int     close_window(t_data *data);
 void    draw_mandelbrot_fractal(t_data *data, t_fractal *fractal);
+int get_color(int iteration, int max_iterations);
 
 
 

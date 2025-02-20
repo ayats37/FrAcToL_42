@@ -6,7 +6,7 @@
 /*   By: taya <taya@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 11:57:50 by taya              #+#    #+#             */
-/*   Updated: 2025/02/19 18:11:44 by taya             ###   ########.fr       */
+/*   Updated: 2025/02/19 20:02:08 by taya             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void put_pixel_to_image(t_data *data, int x, int y, int color)
 int create_window_img(t_data *data)
 {
     data->width = 800;
-    data->height = 600;
+    data->height = 700;
 
     data->mlx = mlx_init();
     if (!data->mlx)

@@ -1,5 +1,5 @@
 
-SRCS = window.c main.c mandelbrot.c hooks.c
+SRCS = window.c main.c mandelbrot.c hooks.c julia.c utils.c
 OBJS = $(SRCS:.c=.o)
 CC = cc
 CFLAGS = -Wall -Wextra -Werror

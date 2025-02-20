@@ -6,21 +6,12 @@
 /*   By: taya <taya@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 11:57:56 by taya              #+#    #+#             */
-/*   Updated: 2025/02/19 19:50:09 by taya             ###   ########.fr       */
+/*   Updated: 2025/02/20 20:13:34 by taya             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int get_color(int iteration, int max_iterations)
-{
-    int color;
-    
-    if (iteration == max_iterations)
-        return (0x000000); 
-    color = (iteration * 255 / max_iterations);
-    return ((color * 2) << 16) | ((color * 4) << 8) | (color * 9);
-}
 void    draw_mandelbrot_fractal(t_data *data, t_fractal *fractal)
 {
     int py;

@@ -6,7 +6,7 @@
 /*   By: taya <taya@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 11:57:50 by taya              #+#    #+#             */
-/*   Updated: 2025/02/19 20:02:08 by taya             ###   ########.fr       */
+/*   Updated: 2025/02/20 19:52:02 by taya             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,30 +56,12 @@ int close_window(t_data *data)
     return (0);
 }
 
-// int main()
-// {
-//     t_data data = {0};
-//     int x;
-//     int y;
-//     int color;
-
-//     if (!create_window_img(&data))
-//         return (1);
-
-//     y = 0;
-//     while (y < data.height)
-//     {
-//         x = 0;
-//         while (x < data.width)
-//         {
-//             color = (x * 256 / data.width) << 16 | (y * 256 / data.height) << 8 | (x * y * 256 / (data.width * data.height));
-//             put_pixel_to_image(&data, x, y, color);
-//             x++;
-//         }
-//         y++;
-//     }
-//     mlx_put_image_to_window(data.mlx, data.win, data.img, 0, 0);
-//     mlx_hook(data.win, 17, 0, close_window, &data);
-//     mlx_loop(data.mlx);
-//     return (0);
-// }
+int get_color(int iteration, int max_iterations)
+{
+    int color;
+    
+    if (iteration == max_iterations)
+        return (0x000000); 
+    color = (iteration * 255 / max_iterations);
+    return ((color * 2) << 16) | ((color * 4) << 8) | (color * 9);
+}

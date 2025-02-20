@@ -6,7 +6,7 @@
 /*   By: taya <taya@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 11:57:59 by taya              #+#    #+#             */
-/*   Updated: 2025/02/20 22:00:53 by taya             ###   ########.fr       */
+/*   Updated: 2025/02/20 22:22:47 by taya             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ int main(int argc, char **argv)
     }
     if (ft_strcmp(argv[1], "julia") == 0)
     {
-        fractal.julia.real = ft_atoi(argv[2]);
-        fractal.julia.imag = ft_atoi(argv[3]);
+        fractal.julia.real = ft_atof(argv[2]);
+        fractal.julia.imag = ft_atof(argv[3]);
         data.fractal_type = 1;
     }
     else if (ft_strcmp(argv[1], "mandelbrot") == 0)

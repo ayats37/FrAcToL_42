@@ -6,7 +6,7 @@
 /*   By: taya <taya@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 11:58:17 by taya              #+#    #+#             */
-/*   Updated: 2025/02/20 21:12:59 by taya             ###   ########.fr       */
+/*   Updated: 2025/02/20 22:22:25 by taya             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,6 @@ int key_hook(int keycode, t_data *data);
 int mouse_hook(int button, int x, int y, t_data *data);
 void    draw_julia_fractal(t_data *data, t_fractal *fractal);
 int	ft_strcmp(const char *s1, const char *s2);
-int	ft_atoi(const char *str);
+double ft_atof(const char *str);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: taya <taya@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 11:58:04 by taya              #+#    #+#             */
-/*   Updated: 2025/02/20 20:27:05 by taya             ###   ########.fr       */
+/*   Updated: 2025/02/20 23:08:04 by taya             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,3 +48,4 @@ void    draw_julia_fractal(t_data *data, t_fractal *fractal)
     }
     mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
 }
+

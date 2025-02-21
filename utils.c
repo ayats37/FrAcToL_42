@@ -6,11 +6,12 @@
 /*   By: taya <taya@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 11:57:53 by taya              #+#    #+#             */
-/*   Updated: 2025/02/20 23:07:57 by taya             ###   ########.fr       */
+/*   Updated: 2025/02/21 02:21:20 by taya             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+// #include "fractol.h"
+#include "fractol_bonus.h"
 
 int	ft_strcmp(const char *s1, const char *s2)
 {

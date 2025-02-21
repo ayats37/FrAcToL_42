@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mandelbrot.c                                       :+:      :+:    :+:   */
+/*   tricorn_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: taya <taya@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/19 11:57:56 by taya              #+#    #+#             */
-/*   Updated: 2025/02/21 02:21:08 by taya             ###   ########.fr       */
+/*   Created: 2025/02/21 00:56:29 by taya              #+#    #+#             */
+/*   Updated: 2025/02/21 01:08:23 by taya             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "fractol.h"
 #include "fractol_bonus.h"
 
-void    draw_mandelbrot_fractal(t_data *data, t_fractal *fractal)
+void    draw_tricorn_fractal(t_data *data, t_fractal *fractal)
 {
     int py;
     int px;
@@ -37,7 +36,7 @@ void    draw_mandelbrot_fractal(t_data *data, t_fractal *fractal)
             while (iteration < fractal->max_iterations && ((z.real * z.real + z.imag * z.imag) <= 4))
             {
                 tmp_real = z.real * z.real - z.imag * z.imag + c.real;
-                z.imag = 2 * z.real * z.imag + c.imag;
+                z.imag = -2 * z.real * z.imag + c.imag;
                 z.real = tmp_real;
                 iteration++;
             }

@@ -6,11 +6,12 @@
 /*   By: taya <taya@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 11:58:04 by taya              #+#    #+#             */
-/*   Updated: 2025/02/20 23:08:04 by taya             ###   ########.fr       */
+/*   Updated: 2025/02/21 02:20:55 by taya             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+// #include "fractol.h"
+#include "fractol_bonus.h"
 
 void    draw_julia_fractal(t_data *data, t_fractal *fractal)
 {

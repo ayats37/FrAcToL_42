@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hooks.c                                            :+:      :+:    :+:   */
+/*   hooks_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: taya <taya@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/19 11:58:07 by taya              #+#    #+#             */
-/*   Updated: 2025/02/21 02:22:38 by taya             ###   ########.fr       */
+/*   Created: 2025/02/21 02:23:25 by taya              #+#    #+#             */
+/*   Updated: 2025/02/21 02:29:27 by taya             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "fractol_bonus.h"
 
 int key_hook(int keycode, t_data *data)
 {
@@ -26,22 +26,36 @@ int key_hook(int keycode, t_data *data)
         data->fractal->ofsset.imag += 30 / data->fractal->zoom;
     if (data->fractal_type == 0)
         draw_mandelbrot_fractal(data, data->fractal);
-    else
+    else if (data->fractal_type == 1)
         draw_julia_fractal(data, data->fractal);
+    else if (data->fractal_type == 2)
+        draw_tricorn_fractal(data, data->fractal);
+    else
+        return (1);
     return (0);
 }
 int mouse_hook(int button, int x, int y, t_data *data)
 {
-    (void)x;
-    (void)y;
-
+    
     if (button == 4)
+    {
+        data->fractal->ofsset.real += (x - data->width / 2) / data->fractal->zoom;
+        data->fractal->ofsset.imag += (y - data->height / 2) / data->fractal->zoom;
         data->fractal->zoom *= 1.1;
+    }
     else if (button == 5)
+    {
+        data->fractal->ofsset.real += (x - data->width / 2) / data->fractal->zoom;
+        data->fractal->ofsset.imag += (y - data->height / 2) / data->fractal->zoom;
         data->fractal->zoom /= 1.1;
+    }
     if (data->fractal_type == 0)
         draw_mandelbrot_fractal(data, data->fractal);
-    else
+    else if (data->fractal_type == 1)
         draw_julia_fractal(data, data->fractal);
+    else if (data->fractal_type == 2)
+        draw_tricorn_fractal(data, data->fractal);
+    else
+        return (1);
     return (0);
 }

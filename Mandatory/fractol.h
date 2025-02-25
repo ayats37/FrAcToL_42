@@ -11,60 +11,60 @@
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
-#define FRACTOL_H
+# define FRACTOL_H
 
-#include <mlx.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <math.h>
-
+# include <math.h>
+# include <mlx.h>
+# include <stdio.h>
+# include <stdlib.h>
 
 typedef struct s_complex
 {
-    double     real;
-    double     imag;
-    
-}   t_complex;
+	double		real;
+	double		imag;
+
+}				t_complex;
 
 typedef struct s_fractal
 {
-    int max_iterations;
-    double zoom;
-    t_complex ofsset;
-    t_complex   julia;    
-}t_fractal;
+	int			max_iterations;
+	double		zoom;
+	t_complex	ofsset;
+	t_complex	julia;
+}				t_fractal;
 
 typedef struct s_data
 {
-    void    *mlx;
-    void    *win;
-    void    *img;
-    char    *addr;
-    int     bpp;
-    int     line_length;
-    int     endian;
-    int     width;
-    int     height;
-    int     fractal_type;
-    t_fractal   *fractal;
-}   t_data;
+	void		*mlx;
+	void		*win;
+	void		*img;
+	char		*addr;
+	int			bpp;
+	int			line_length;
+	int			endian;
+	int			width;
+	int			height;
+	int			fractal_type;
+	t_fractal	*fractal;
+}				t_data;
 
-
-
-
-void   put_pixel_to_image(t_data *data, int x, int y, int color);
-int    create_window_img(t_data *data);
-int     close_window(t_data *data);
-void    mandelbrot(t_data *data, t_fractal *fractal);
-int get_color(int iteration, int max_iterations);
-int key_hook(int keycode, t_data *data);
-int mouse_hook(int button, int x, int y, t_data *data);
-void    julia(t_data *data, t_fractal *fractal);
-void    draw_fractal(t_data *data, t_fractal *fractal, int px, int py, t_complex c);
-void    calculate_iterations(int *iteration, int max_iterations, t_complex *z, t_complex c);
-int	ft_strcmp(const char *s1, const char *s2);
-double ft_atof(const char *str);
-void    draw_m_fractal(t_data *data, t_fractal *fractal, int px, int py, t_complex z);
-void    fractal_type(t_data *data, t_fractal *fractal, int argc, char **argv);
+void			put_pixel_to_image(t_data *data, int x, int y, int color);
+int				create_window_img(t_data *data);
+int				close_window(t_data *data);
+void			mandelbrot(t_data *data, t_fractal *fractal);
+int				get_color(int iteration, int max_iterations);
+int				key_hook(int keycode, t_data *data);
+int				mouse_hook(int button, int x, int y, t_data *data);
+void			julia(t_data *data, t_fractal *fractal);
+void			draw_fractal(t_data *data, t_fractal *fractal, int px, int py,
+					t_complex c);
+void			calculate_iterations(int *iteration, int max_iterations,
+					t_complex *z, t_complex c);
+int				ft_strcmp(const char *s1, const char *s2);
+double			ft_atof(const char *str);
+void			draw_m_fractal(t_data *data, t_fractal *fractal, int px, int py,
+					t_complex z);
+void			fractal_type(t_data *data, t_fractal *fractal, int argc,
+					char **argv);
 
 #endif

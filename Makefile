@@ -1,5 +1,5 @@
-SRCS = window.c main.c mandelbrot.c hooks.c julia.c utils.c
-SRCS_BONUS = window.c main_bonus.c mandelbrot.c hooks_bonus.c julia.c utils.c tricorn.c
+SRCS = ./Mandatory/window.c ./Mandatory/main.c ./Mandatory/mandelbrot.c ./Mandatory/hooks.c ./Mandatory/julia.c ./Mandatory/utils.c
+SRCS_BONUS = ./Bonus/window_bonus.c ./Bonus/main_bonus.c ./Bonus/mandelbrot_bonus.c ./Bonus/hooks_bonus.c ./Bonus/julia_bonus.c ./Bonus/utils_bonus.c ./Bonus/tricorn_bonus.c
 OBJS = $(SRCS:.c=.o)
 OBJS_BONUS = $(SRCS_BONUS:.c=.o)
 CC = cc

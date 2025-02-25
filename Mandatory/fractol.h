@@ -6,7 +6,7 @@
 /*   By: taya <taya@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 11:58:17 by taya              #+#    #+#             */
-/*   Updated: 2025/02/20 23:07:48 by taya             ###   ########.fr       */
+/*   Updated: 2025/02/24 23:48:38 by taya             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,16 +52,19 @@ typedef struct s_data
 
 
 
-
 void   put_pixel_to_image(t_data *data, int x, int y, int color);
 int    create_window_img(t_data *data);
 int     close_window(t_data *data);
-void    draw_mandelbrot_fractal(t_data *data, t_fractal *fractal);
+void    mandelbrot(t_data *data, t_fractal *fractal);
 int get_color(int iteration, int max_iterations);
 int key_hook(int keycode, t_data *data);
 int mouse_hook(int button, int x, int y, t_data *data);
-void    draw_julia_fractal(t_data *data, t_fractal *fractal);
+void    julia(t_data *data, t_fractal *fractal);
+void    draw_fractal(t_data *data, t_fractal *fractal, int px, int py, t_complex c);
+void    calculate_iterations(int *iteration, int max_iterations, t_complex *z, t_complex c);
 int	ft_strcmp(const char *s1, const char *s2);
 double ft_atof(const char *str);
+void    draw_m_fractal(t_data *data, t_fractal *fractal, int px, int py, t_complex z);
+void    fractal_type(t_data *data, t_fractal *fractal, int argc, char **argv);
 
 #endif

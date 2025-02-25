@@ -1,16 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   utils_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: taya <taya@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/19 11:57:53 by taya              #+#    #+#             */
-/*   Updated: 2025/02/21 02:21:20 by taya             ###   ########.fr       */
+/*   Created: 2025/02/24 19:31:44 by taya              #+#    #+#             */
+/*   Updated: 2025/02/24 23:59:21 by taya             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "fractol.h"
 #include "fractol_bonus.h"
 
 int	ft_strcmp(const char *s1, const char *s2)
@@ -57,6 +56,17 @@ double ft_atof(const char *str)
             break;
         i++;
     }
-
     return (sign * result);
+}
+
+void    calculate_iterations(int *iteration, int max_iterations, t_complex *z, t_complex c)
+{
+    double tmp_real;
+    while (*iteration < max_iterations && (z->real * z->real + z->imag * z->imag <= 4))
+            {
+                tmp_real = z->real * z->real - z->imag * z->imag + c.real;
+                z->imag = 2 * z->real * z->imag + c.imag;
+                z->real = tmp_real;
+                (*iteration)++;
+            }
 }

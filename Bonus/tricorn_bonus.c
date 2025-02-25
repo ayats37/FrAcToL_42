@@ -6,21 +6,43 @@
 /*   By: taya <taya@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 00:56:29 by taya              #+#    #+#             */
-/*   Updated: 2025/02/21 01:08:23 by taya             ###   ########.fr       */
+/*   Updated: 2025/02/25 00:36:47 by taya             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol_bonus.h"
 
-void    draw_tricorn_fractal(t_data *data, t_fractal *fractal)
+void    calculate_iteration_tricorn(int *iteration, int max_iterations, t_complex *z, t_complex c)
+{
+    double tmp_real;
+    
+    while (*iteration < max_iterations && ((z->real * z->real + z->imag * z->imag) <= 4))
+            {
+                tmp_real = z->real * z->real - z->imag * z->imag + c.real;
+                z->imag = -2 * z->real * z->imag + c.imag;
+                z->real = tmp_real;
+                (*iteration)++;
+            }
+}
+void    draw_t_fractal(t_data *data, t_fractal *fractal, int px, int py, t_complex z)
+{
+    t_complex c;
+    int iteration;
+    int color;
+
+    c.real = (px - data->width / 2) / fractal->zoom + fractal->ofsset.real;
+    c.imag = (py - data->height / 2) / fractal->zoom + fractal->ofsset.imag;
+    iteration = 0;
+    calculate_iteration_tricorn(&iteration, fractal->max_iterations, &z, c);
+    color = get_color(iteration, fractal->max_iterations);
+    put_pixel_to_image(data, px, py, color);
+    
+}
+void    tricorn(t_data *data, t_fractal *fractal)
 {
     int py;
     int px;
-    int iteration;
-    double  tmp_real;
-    t_complex c;
     t_complex z;
-    int color;
 
     py = 0;
     while (py < data->height)
@@ -28,20 +50,9 @@ void    draw_tricorn_fractal(t_data *data, t_fractal *fractal)
         px = 0;
         while (px < data->width)
         {
-            c.real = (px - data->width / 2) / fractal->zoom + fractal->ofsset.real;
-            c.imag = (py - data->height / 2) / fractal->zoom + fractal->ofsset.imag; 
             z.real = 0;
             z.imag = 0;
-            iteration = 0;
-            while (iteration < fractal->max_iterations && ((z.real * z.real + z.imag * z.imag) <= 4))
-            {
-                tmp_real = z.real * z.real - z.imag * z.imag + c.real;
-                z.imag = -2 * z.real * z.imag + c.imag;
-                z.real = tmp_real;
-                iteration++;
-            }
-            color = get_color(iteration, fractal->max_iterations);
-            put_pixel_to_image(data, px, py, color);
+            draw_t_fractal(data, fractal, px, py, z);
             px++;
         }
         py++;

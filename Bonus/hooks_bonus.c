@@ -6,7 +6,7 @@
 /*   By: taya <taya@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 02:23:25 by taya              #+#    #+#             */
-/*   Updated: 2025/02/25 01:08:34 by taya             ###   ########.fr       */
+/*   Updated: 2025/02/25 01:47:31 by taya             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ int	key_hook(int keycode, t_data *data)
 	else if (keycode == 126)
 		data->fractal->ofsset.imag += 30 / data->fractal->zoom;
 	if (data->fractal_type == 0)
-		mandelbrot(data, data->fractal);
+		mandelbrot(data);
 	else if (data->fractal_type == 1)
 		julia(data, data->fractal);
 	else if (data->fractal_type == 2)
-		tricorn(data, data->fractal);
+		tricorn(data);
 	else
 		return (1);
 	return (0);
@@ -54,11 +54,11 @@ int	mouse_hook(int button, int x, int y, t_data *data)
 		data->fractal->zoom /= 1.1;
 	}
 	if (data->fractal_type == 0)
-		mandelbrot(data, data->fractal);
+		mandelbrot(data);
 	else if (data->fractal_type == 1)
 		julia(data, data->fractal);
 	else if (data->fractal_type == 2)
-		tricorn(data, data->fractal);
+		tricorn(data);
 	else
 		return (1);
 	return (0);

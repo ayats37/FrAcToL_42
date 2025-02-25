@@ -6,7 +6,7 @@
 /*   By: taya <taya@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 00:57:27 by taya              #+#    #+#             */
-/*   Updated: 2025/02/25 00:35:44 by taya             ###   ########.fr       */
+/*   Updated: 2025/02/25 01:57:18 by taya             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,17 +56,14 @@ int				key_hook(int keycode, t_data *data);
 int				mouse_hook(int button, int x, int y, t_data *data);
 int				ft_strcmp(const char *s1, const char *s2);
 double			ft_atof(const char *str);
-void			tricorn(t_data *data, t_fractal *fractal);
-void			draw_t_fractal(t_data *data, t_fractal *fractal, int px, int py,
-					t_complex z);
-void			calculate_iteration_tricorn(int *iteration, int max_iterations,
+void			tricorn(t_data *data);
+void			draw_t_fractal(t_data *data, int px, int py, t_complex z);
+void			calculate_iter_tricorn(int *iteration, int max_iterations,
 					t_complex *z, t_complex c);
-void			mandelbrot(t_data *data, t_fractal *fractal);
-void			draw_m_fractal(t_data *data, t_fractal *fractal, int px, int py,
-					t_complex z);
+void			mandelbrot(t_data *data);
+void			draw_m_fractal(t_data *data, int px, int py, t_complex z);
 void			julia(t_data *data, t_fractal *fractal);
-void			draw_fractal(t_data *data, t_fractal *fractal, int px, int py,
-					t_complex c);
+void			draw_fractal(t_data *data, int px, int py, t_complex c);
 void			fractal_type(t_data *data, t_fractal *fractal, int argc,
 					char **argv);
 void			calculate_iterations(int *iteration, int max_iterations,

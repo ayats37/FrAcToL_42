@@ -6,14 +6,14 @@
 /*   By: taya <taya@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 00:56:29 by taya              #+#    #+#             */
-/*   Updated: 2025/02/25 01:11:00 by taya             ###   ########.fr       */
+/*   Updated: 2025/02/25 01:57:11 by taya             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol_bonus.h"
 
-void	calculate_iteration_tricorn(int *iteration, int max_iterations,
-		t_complex *z, t_complex c)
+void	calculate_iter_tricorn(int *iteration, int max_iterations, t_complex *z,
+		t_complex c)
 {
 	double	tmp_real;
 
@@ -27,22 +27,23 @@ void	calculate_iteration_tricorn(int *iteration, int max_iterations,
 	}
 }
 
-void	draw_t_fractal(t_data *data, t_fractal *fractal, int px, int py,
-		t_complex z)
+void	draw_t_fractal(t_data *data, int px, int py, t_complex z)
 {
 	t_complex	c;
 	int			iteration;
 	int			color;
 
-	c.real = (px - data->width / 2) / fractal->zoom + fractal->ofsset.real;
-	c.imag = (py - data->height / 2) / fractal->zoom + fractal->ofsset.imag;
+	c.real = (px - data->width / 2) / data->fractal->zoom
+		+ data->fractal->ofsset.real;
+	c.imag = (py - data->height / 2) / data->fractal->zoom
+		+ data->fractal->ofsset.imag;
 	iteration = 0;
-	calculate_iteration_tricorn(&iteration, fractal->max_iterations, &z, c);
-	color = get_color(iteration, fractal->max_iterations);
+	calculate_iter_tricorn(&iteration, data->fractal->max_iterations, &z, c);
+	color = get_color(iteration, data->fractal->max_iterations);
 	put_pixel_to_image(data, px, py, color);
 }
 
-void	tricorn(t_data *data, t_fractal *fractal)
+void	tricorn(t_data *data)
 {
 	int			py;
 	int			px;
@@ -56,7 +57,7 @@ void	tricorn(t_data *data, t_fractal *fractal)
 		{
 			z.real = 0;
 			z.imag = 0;
-			draw_t_fractal(data, fractal, px, py, z);
+			draw_t_fractal(data, px, py, z);
 			px++;
 		}
 		py++;

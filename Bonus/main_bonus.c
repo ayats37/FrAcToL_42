@@ -6,7 +6,7 @@
 /*   By: taya <taya@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 02:20:02 by taya              #+#    #+#             */
-/*   Updated: 2025/02/25 01:07:54 by taya             ###   ########.fr       */
+/*   Updated: 2025/02/25 01:47:40 by taya             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,11 @@ int	main(int argc, char **argv)
 		return (1);
 	fractal_type(&data, &fractal, argc, argv);
 	if (data.fractal_type == 0)
-		mandelbrot(&data, &fractal);
+		mandelbrot(&data);
 	else if (data.fractal_type == 1)
 		julia(&data, &fractal);
 	else if (data.fractal_type == 2)
-		tricorn(&data, &fractal);
+		tricorn(&data);
 	mlx_key_hook(data.win, key_hook, &data);
 	mlx_mouse_hook(data.win, mouse_hook, &data);
 	mlx_hook(data.win, 17, 0, close_window, &data);

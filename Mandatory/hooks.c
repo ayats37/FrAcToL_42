@@ -6,7 +6,7 @@
 /*   By: taya <taya@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 11:58:07 by taya              #+#    #+#             */
-/*   Updated: 2025/02/25 01:09:56 by taya             ###   ########.fr       */
+/*   Updated: 2025/02/25 01:40:54 by taya             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	mouse_hook(int button, int x, int y, t_data *data)
 	else if (button == 5)
 		data->fractal->zoom /= 1.1;
 	if (data->fractal_type == 0)
-		mandelbrot(data, data->fractal);
+		mandelbrot(data);
 	else
 		julia(data, data->fractal);
 	return (0);

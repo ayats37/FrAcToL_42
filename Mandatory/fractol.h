@@ -6,7 +6,7 @@
 /*   By: taya <taya@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 11:58:17 by taya              #+#    #+#             */
-/*   Updated: 2025/02/25 01:41:34 by taya             ###   ########.fr       */
+/*   Updated: 2025/02/26 15:37:35 by taya             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,14 @@ typedef struct s_data
 	int			fractal_type;
 	t_fractal	*fractal;
 }				t_data;
+
+
+typedef struct s_atof_data
+{
+	double sign;
+	double result;
+	double  fraction;
+}	t_atof_data;
 
 void			put_pixel_to_image(t_data *data, int x, int y, int color);
 int				create_window_img(t_data *data);

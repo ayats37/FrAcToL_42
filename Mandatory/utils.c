@@ -6,7 +6,7 @@
 /*   By: taya <taya@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 11:57:53 by taya              #+#    #+#             */
-/*   Updated: 2025/02/26 16:35:54 by taya             ###   ########.fr       */
+/*   Updated: 2025/02/27 09:56:28 by taya             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,21 +46,19 @@ int	ft_atoi(const char *str)
 	}
 	return (result * sign);
 }
+
 double	ft_atof(const char *str)
 {
-	t_atof_data data_atof;
-   
+	t_atof_data	data_atof;
+
 	data_atof.result = 0;
 	data_atof.sign = 1;
 	while ((*str >= 9 && *str <= 13) || *str == 32)
 		str++;
-	if (*str == '-' || *str == '+')
-	{
-		if (*str == '-')
-			data_atof.sign = -1;
-		str++;
-	}
-	data_atof.result = ft_atoi(str); 
+	while (*str == '+' || *str == '-')
+		if (*(str++) == '-')
+			data_atof.sign *= -1;
+	data_atof.result = ft_atoi(str);
 	while (*str >= '0' && *str <= '9')
 		str++;
 	if (*str == '.')
@@ -68,7 +66,7 @@ double	ft_atof(const char *str)
 		data_atof.fraction = 0.1;
 		str++;
 		while (*str >= '0' && *str <= '9')
-		{		
+		{
 			data_atof.result += (*str - '0') * data_atof.fraction;
 			data_atof.fraction /= 10;
 			str++;

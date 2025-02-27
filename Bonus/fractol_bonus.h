@@ -6,7 +6,7 @@
 /*   By: taya <taya@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 00:57:27 by taya              #+#    #+#             */
-/*   Updated: 2025/02/25 01:57:18 by taya             ###   ########.fr       */
+/*   Updated: 2025/02/27 10:19:06 by taya             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,13 @@ typedef struct s_data
 	int			fractal_type;
 }				t_data;
 
+typedef struct s_atof_data
+{
+	double		sign;
+	double		result;
+	double		fraction;
+}				t_atof_data;
+
 void			put_pixel_to_image(t_data *data, int x, int y, int color);
 int				create_window_img(t_data *data);
 int				close_window(t_data *data);
@@ -68,5 +75,7 @@ void			fractal_type(t_data *data, t_fractal *fractal, int argc,
 					char **argv);
 void			calculate_iterations(int *iteration, int max_iterations,
 					t_complex *z, t_complex c);
+int				ft_atoi(const char *str);
+void			apply_zoom(t_data *data, int button, int x, int y);
 
 #endif

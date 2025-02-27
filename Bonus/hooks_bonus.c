@@ -6,7 +6,7 @@
 /*   By: taya <taya@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 02:23:25 by taya              #+#    #+#             */
-/*   Updated: 2025/02/26 14:55:16 by taya             ###   ########.fr       */
+/*   Updated: 2025/02/27 10:18:11 by taya             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,15 @@ int	key_hook(int keycode, t_data *data)
 	return (0);
 }
 
-int	mouse_hook(int button, int x, int y, t_data *data)
+void	apply_zoom(t_data *data, int button, int x, int y)
 {
-	double mouse_re;
-	double mouse_imag;
+	double	mouse_re;
+	double	mouse_imag;
 
-	mouse_re = (x - data->width / 2) / data->fractal->zoom + data->fractal->ofsset.real;
-	mouse_imag = (y - data->height / 2) / data->fractal->zoom + data->fractal->ofsset.imag;
+	mouse_re = (x - data->width / 2) / data->fractal->zoom
+		+ data->fractal->ofsset.real;
+	mouse_imag = (y - data->height / 2) / data->fractal->zoom
+		+ data->fractal->ofsset.imag;
 	if (button == 4)
 	{
 		data->fractal->zoom *= 1.1;
@@ -58,6 +60,12 @@ int	mouse_hook(int button, int x, int y, t_data *data)
 		data->fractal->ofsset.imag = mouse_imag - (y - data->height / 2)
 			/ data->fractal->zoom;
 	}
+}
+
+int	mouse_hook(int button, int x, int y, t_data *data)
+{
+	if (button == 4 || button == 5)
+		apply_zoom(data, button, x, y);
 	if (data->fractal_type == 0)
 		mandelbrot(data);
 	else if (data->fractal_type == 1)

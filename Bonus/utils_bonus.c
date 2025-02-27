@@ -6,7 +6,7 @@
 /*   By: taya <taya@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 19:31:44 by taya              #+#    #+#             */
-/*   Updated: 2025/02/24 23:59:21 by taya             ###   ########.fr       */
+/*   Updated: 2025/02/27 09:56:15 by taya             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,46 +22,57 @@ int	ft_strcmp(const char *s1, const char *s2)
 	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
 
-double	ft_atof(const char *str)
+int	ft_atoi(const char *str)
 {
-	int		i;
-	double	result;
-	double	sign;
-	double	fraction;
-	int		point;
+	int	i;
+	int	result;
+	int	sign;
 
 	i = 0;
-	result = 0.0;
-	sign = 1.0;
-	fraction = 0.1;
-	point = 0;
+	result = 0;
+	sign = 1;
 	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
 		i++;
 	if (str[i] == '-' || str[i] == '+')
 	{
 		if (str[i] == '-')
-			sign = -1.0;
+			sign *= -1;
 		i++;
 	}
-	while (str[i])
+	while ((str[i] >= '0' && str[i] <= '9'))
 	{
-		if (str[i] >= '0' && str[i] <= '9')
-		{
-			if (point)
-			{
-				result += (str[i] - '0') * fraction;
-				fraction /= 10.0;
-			}
-			else
-				result = result * 10.0 + (str[i] - '0');
-		}
-		else if (str[i] == '.')
-			point = 1;
-		else
-			break ;
+		result = (result * 10) + str[i] - '0';
 		i++;
 	}
-	return (sign * result);
+	return (result * sign);
+}
+
+double	ft_atof(const char *str)
+{
+	t_atof_data	data_atof;
+
+	data_atof.result = 0;
+	data_atof.sign = 1;
+	while ((*str >= 9 && *str <= 13) || *str == 32)
+		str++;
+	while (*str == '+' || *str == '-')
+		if (*(str++) == '-')
+			data_atof.sign *= -1;
+	data_atof.result = ft_atoi(str);
+	while (*str >= '0' && *str <= '9')
+		str++;
+	if (*str == '.')
+	{
+		data_atof.fraction = 0.1;
+		str++;
+		while (*str >= '0' && *str <= '9')
+		{
+			data_atof.result += (*str - '0') * data_atof.fraction;
+			data_atof.fraction /= 10;
+			str++;
+		}
+	}
+	return (data_atof.sign * data_atof.result);
 }
 
 void	calculate_iterations(int *iteration, int max_iterations, t_complex *z,
